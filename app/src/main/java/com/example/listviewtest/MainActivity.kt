@@ -10,18 +10,26 @@ class MainActivity : AppCompatActivity() {
         "Apple", "Banana", "Orange", "Watermelon", "Pear", "Grape",
         "Pineapple", "Strawberry", "Cherry", "Mango")
 
-    private val idMap = mapOf("Apple" to R.drawable.apple_pic)
+    private val idMap = mapOf("Apple" to R.drawable.apple_pic,
+    "Banana" to R.drawable.banana_pic,
+    "Orange" to R.drawable.orange_pic,
+    "Watermelon" to R.drawable.orange_pic,
+    "Pear" to R.drawable.pear_pic,
+    "Grape" to R.drawable.grape_pic,
+    "Pineapple" to R.drawable.pineapple_pic,
+    "Strawberry" to R.drawable.strawberry_pic,
+    "Cherry" to R.drawable.cherry_pic,
+    "Mango" to R.drawable.mango_pic)
+
+
+
+
     val fruitList = ArrayList<Fruit>()
     private fun initList() {
         repeat(2 ){
-            fruitList.add(Fruit("Apple" , R.drawable.apple_pic))
-            fruitList.add(Fruit("Banana" , R.drawable.banana_pic))
-            fruitList.add(Fruit("Oran" , R.drawable.apple_pic))
-            fruitList.add(Fruit("Apple" , R.drawable.apple_pic))
-            fruitList.add(Fruit("Apple" , R.drawable.apple_pic))
-            fruitList.add(Fruit("Apple" , R.drawable.apple_pic))
-            fruitList.add(Fruit("Apple" , R.drawable.apple_pic))
-            fruitList.add(Fruit("Apple" , R.drawable.apple_pic))
+            for(key in idMap.keys){
+                fruitList.add(Fruit(key, idMap[key]!!))
+            }
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
