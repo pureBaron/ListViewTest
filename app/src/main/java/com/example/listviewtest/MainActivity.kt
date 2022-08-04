@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private val idMap = mapOf("Apple" to R.drawable.apple_pic,
     "Banana" to R.drawable.banana_pic,
     "Orange" to R.drawable.orange_pic,
-    "Watermelon" to R.drawable.orange_pic,
+    "Watermelon" to R.drawable.watermelon_pic,
     "Pear" to R.drawable.pear_pic,
     "Grape" to R.drawable.grape_pic,
     "Pineapple" to R.drawable.pineapple_pic,
@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
     val fruitList = ArrayList<Fruit>()
     private fun initList() {
         repeat(2 ){
-            for(key in idMap.keys){
-                fruitList.add(Fruit(key, idMap[key]!!))
+            for(mapEntry in idMap.entries){
+                fruitList.add(Fruit(mapEntry.key, mapEntry.value))
             }
         }
     }
@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
+        initList()
+
+        val adapter = FruitAdapter(this , R.layout.fruit_item , fruitList)
         listView.adapter = adapter
     }
 
